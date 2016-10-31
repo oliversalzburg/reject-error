@@ -8,9 +8,9 @@
  * @returns {Promise}
  */
 function rejectError( func, thisArg, ...args ) {
-	return new Promise( ( resolve, reject ) => {
+	return new module.exports.Promise( ( resolve, reject ) => {
 		try {
-			return Promise.resolve( func.call( thisArg, ...args ) )
+			return module.exports.Promise.resolve( func.call( thisArg, ...args ) )
 				.then( resolve, reject );
 
 		} catch( error ) {
@@ -31,5 +31,6 @@ function proxy( func, thisArg ) {
 	}
 }
 
-module.exports       = rejectError;
-module.exports.proxy = proxy;
+module.exports         = rejectError;
+module.exports.proxy   = proxy;
+module.exports.Promise = Promise;

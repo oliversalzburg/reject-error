@@ -12,7 +12,6 @@ describe( "reject-error", () => {
 
 	describe( "rejections", () => {
 		it( "subject throws", () => {
-
 			function subject() {
 				throw new Error();
 			}
@@ -20,7 +19,6 @@ describe( "reject-error", () => {
 			return expect( rejectError( subject ) ).to.eventually.be.rejected;
 		} );
 		it( "subject rejects", () => {
-
 			function subject() {
 				return Promise.reject( new Error() );
 			}
@@ -28,7 +26,6 @@ describe( "reject-error", () => {
 			return expect( rejectError( subject ) ).to.eventually.be.rejected;
 		} );
 		it( "subject rejects with Bluebird", () => {
-
 			function subject() {
 				const Bluebird = require( "bluebird" );
 				return Bluebird.reject( new Error() );
@@ -40,7 +37,6 @@ describe( "reject-error", () => {
 
 	describe( "resolutions", () => {
 		it( "subject returns", () => {
-
 			function subject() {
 				return "foo";
 			}
@@ -48,7 +44,6 @@ describe( "reject-error", () => {
 			return expect( rejectError( subject ) ).to.eventually.equal( "foo" );
 		} );
 		it( "subject resolves", () => {
-
 			function subject() {
 				return Promise.resolve( "foo" );
 			}
@@ -170,5 +165,25 @@ describe( "reject-error proxy", () => {
 
 			return expect( rejectError.proxy( subject, this )( 1, 2, 4 ) ).to.eventually.equal( 7 );
 		} );
-	} )
+	} );
+} );
+
+describe( "Promise", () => {
+	const Bluebird    = require( "bluebird" );
+	const rejectError = require( "." );
+
+	beforeEach( () => {
+		rejectError.Promise = Bluebird;
+	} );
+	afterEach( () => {
+		rejectError.Promise = Promise;
+	} );
+
+	it( "should use the provided promise library", () => {
+		function subject() {
+			return "foo";
+		}
+
+		return expect( rejectError( subject ) ).to.be.an.instanceof( Bluebird );
+	} );
 } );
