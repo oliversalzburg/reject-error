@@ -186,4 +186,12 @@ describe( "Promise", () => {
 
 		return expect( rejectError( subject ) ).to.be.an.instanceof( Bluebird );
 	} );
+	it( "should use the provided promise library for rejections", () => {
+		function subject() {
+			throw new Error( "boom" );
+		}
+
+		// .catch all to avoid unhandled rejection warning.
+		return expect( rejectError( subject ).catch( Function.prototype ) ).to.be.an.instanceof( Bluebird );
+	} );
 } );
