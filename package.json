@@ -1,6 +1,6 @@
 {
   "name": "reject-error",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Strong guarantee to return a promise",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/oliversalzburg/reject-error#readme",
   "devDependencies": {
+    "bluebird": "^3.4.6",
     "chai": "~3.5.0",
     "chai-as-promised": "~6.0.0",
     "istanbul": "~0.4.3",

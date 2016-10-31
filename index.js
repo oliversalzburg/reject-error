@@ -3,14 +3,14 @@
 /**
  * Strong guarantee to return a promise.
  * @param {Function} func
- * @param {Object} thisArg
- * @param {*} args
+ * @param {Object} [thisArg]
+ * @param {*} [args]
  * @returns {Promise}
  */
 function rejectError( func, thisArg, ...args ) {
-	return new Promise( ( resolve, reject ) => {
+	return new module.exports.Promise( ( resolve, reject ) => {
 		try {
-			return Promise.resolve( func.call( thisArg, ...args ) )
+			return module.exports.Promise.resolve( func.call( thisArg, ...args ) )
 				.then( resolve, reject );
 
 		} catch( error ) {
@@ -19,4 +19,18 @@ function rejectError( func, thisArg, ...args ) {
 	} );
 }
 
-module.exports = rejectError;
+/**
+ * Returns a function with a strong guarantee to return a promise.
+ * @param {Function} func
+ * @param {Object} [thisArg]
+ * @returns {Function<Promise>}
+ */
+function proxy( func, thisArg ) {
+	return ( ...args ) => {
+		return rejectError( func, thisArg, ...args );
+	}
+}
+
+module.exports         = rejectError;
+module.exports.proxy   = proxy;
+module.exports.Promise = Promise;
