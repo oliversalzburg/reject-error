@@ -1,0 +1,26 @@
+{
+  "name": "reject-error",
+  "version": "1.0.0",
+  "description": "Strong guarantee to return a promise",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover node_modules/mocha/bin/_mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliversalzburg/reject-error.git"
+  },
+  "author": "Oliver Salzburg <oliver.salzburg@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oliversalzburg/reject-error/issues"
+  },
+  "homepage": "https://github.com/oliversalzburg/reject-error#readme",
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "chai-as-promised": "~6.0.0",
+    "istanbul": "~0.4.3",
+    "jscs": "~3.0.3",
+    "mocha": "~3.1.0"
+  }
+}

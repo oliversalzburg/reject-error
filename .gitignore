@@ -1,0 +1,12 @@
+# Settings for the DB Navigator plugin
+.idea/dbnavigator.xml
+# WebStorm deployment settings
+.idea/deployment.xml
+# Current user workspace
+.idea/workspace.xml
+
+# npm modules
+node_modules/
+
+# Test coverage results
+coverage/
