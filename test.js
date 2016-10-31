@@ -80,7 +80,7 @@ describe( "reject-error", () => {
 	} );
 
 	describe( "arguments", () => {
-		it.only( "passes all arguments", () => {
+		it( "passes all arguments", () => {
 			function subject( a, b, c ) {
 				return a + b + c;
 			}
