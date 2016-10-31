@@ -1,6 +1,6 @@
 {
   "name": "reject-error",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Strong guarantee to return a promise",
   "main": "index.js",
   "scripts": {
